@@ -153,8 +153,10 @@ function disconnectWallet() {
     
     // Remove event listeners
     if (window.ethereum) {
-        window.ethereum.removeListener('accountsChanged', () => {});
-        window.ethereum.removeListener('chainChanged', () => {});
+        if (window.ethereum.removeListener) {
+            window.ethereum.removeListener('accountsChanged', () => {});
+            window.ethereum.removeListener('chainChanged', () => {});
+        }
     }
 }
 
@@ -194,4 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.transform = 'translateY(0)';
         });
     });
+    
+    // Check if ethers is loaded
+    if (typeof ethers === 'undefined') {
+        console.error('ethers.js library not loaded');
+        connectWalletBtn.disabled = true;
+        connectWalletBtn.textContent = 'Library Error';
+    }
 });
