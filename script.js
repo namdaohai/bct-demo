@@ -1,5 +1,6 @@
 // DOM Elements
 const connectWalletBtn = document.getElementById('connectWalletBtn');
+const disconnectWalletBtn = document.getElementById('disconnectWalletBtn');
 const walletInfo = document.getElementById('walletInfo');
 const walletAddress = document.getElementById('walletAddress');
 const walletModal = document.getElementById('walletModal');
@@ -50,6 +51,11 @@ connectWalletBtn.addEventListener('click', () => {
     } else {
         alert('Please install MetaMask to connect your wallet!');
     }
+});
+
+// Disconnect wallet button click
+disconnectWalletBtn.addEventListener('click', () => {
+    disconnectWallet();
 });
 
 // Close modal
@@ -137,11 +143,19 @@ function disconnectWallet() {
     walletInfo.classList.remove('connected');
     networkName.textContent = 'Not connected';
     networkIndicator.classList.remove('connected');
+    connectWalletBtn.style.display = 'block';
+    disconnectWalletBtn.style.display = 'none';
     connectWalletBtn.textContent = 'Connect Wallet';
     connectWalletBtn.disabled = false;
     
     localStorage.removeItem('bichotas_wallet_connected');
     localStorage.removeItem('bichotas_wallet_address');
+    
+    // Remove event listeners
+    if (window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', () => {});
+        window.ethereum.removeListener('chainChanged', () => {});
+    }
 }
 
 // Update wallet UI
@@ -149,8 +163,8 @@ function updateWalletUI(address, network) {
     const shortAddress = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
     walletAddress.textContent = shortAddress;
     walletInfo.classList.add('connected');
-    connectWalletBtn.textContent = 'Connected';
-    connectWalletBtn.disabled = true;
+    connectWalletBtn.style.display = 'none';
+    disconnectWalletBtn.style.display = 'block';
     
     networkName.textContent = network;
     networkIndicator.classList.add('connected');
