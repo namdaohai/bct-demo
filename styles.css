@@ -1,240 +1,649 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bichotas ($BCT) - The Coin for Real Bichotas</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Header with Wallet Connection -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-coins"></i>
-                <h1>Bichotas ($BCT)</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#tokenomics">Tokenomics</a></li>
-                    <li><a href="#roadmap">Roadmap</a></li>
-                    <li><a href="#community">Community</a></li>
-                    <li><a href="#memes">Memes</a></li>
-                </ul>
-            </nav>
-            <div class="wallet-section">
-                <div class="network-indicator" id="networkIndicator">
-                    <i class="fas fa-circle"></i>
-                    <span id="networkName">Not connected</span>
-                </div>
-                <div class="wallet-info" id="walletInfo">
-                    <i class="fas fa-wallet"></i>
-                    <span class="wallet-address" id="walletAddress">Not connected</span>
-                </div>
-                <button class="connect-wallet-btn" id="connectWalletBtn">Connect Wallet</button>
-                <button class="disconnect-wallet-btn" id="disconnectWalletBtn" style="display: none;">Disconnect</button>
-            </div>
-        </div>
-    </header>
+:root {
+    --neon-pink: #ff00ff;
+    --electric-blue: #00ffff;
+    --gold: #ffd700;
+    --dark-bg: #121212;
+    --card-bg: rgba(30, 30, 40, 0.8);
+}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Bichotas ($BCT)</h1>
-        <p>The Coin for Real Bichotas</p>
-        <button class="cta-button">Buy $BCT Now</button>
-        <div class="floating" style="margin-top: 50px;">
-            <i class="fas fa-coins" style="font-size: 4rem; color: var(--gold);"></i>
-        </div>
-    </section>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Bichotas</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Born from the streets, powered by memes, and fueled by community — Bichotas is more than a coin. It's a movement. A flex. A vibe.</p>
-                    <p>We're here to take over crypto, one meme at a time. With a strong community-driven approach, Bichotas empowers holders to flex their bags while spreading good vibes across the crypto universe.</p>
-                    <p>Our mission is simple: make crypto fun again while building real value for our holders. Join the Bichota revolution and become part of something legendary!</p>
-                </div>
-                <div class="bichota-image">
-                    <img src="https://i.ibb.co/0X1yY9K/bichota-character.png" alt="Bichota Character">
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #0a0a1a 100%);
+    color: white;
+    overflow-x: hidden;
+    background-attachment: fixed;
+}
 
-    <!-- Tokenomics Section -->
-    <section id="tokenomics" style="background: rgba(10, 10, 30, 0.7);">
-        <div class="container">
-            <h2>Tokenomics</h2>
-            <div class="tokenomics-container">
-                <div class="token-card">
-                    <i class="fas fa-coins"></i>
-                    <h3>Total Supply</h3>
-                    <p>1,000,000,000 $BCT</p>
-                </div>
-                <div class="token-card">
-                    <i class="fas fa-fire"></i>
-                    <h3>Burn Mechanism</h3>
-                    <p>2% per transaction</p>
-                </div>
-                <div class="token-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Liquidity</h3>
-                    <p>50% of supply</p>
-                </div>
-                <div class="token-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Community</h3>
-                    <p>30% airdrop & rewards</p>
-                </div>
-            </div>
-        </div>
-    </section>
+h1, h2, h3 {
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-    <!-- Roadmap Section -->
-    <section id="roadmap">
-        <div class="container">
-            <h2>Roadmap</h2>
-            <div class="roadmap-container">
-                <div class="roadmap-item">
-                    <div class="roadmap-point"></div>
-                    <div class="roadmap-content">
-                        <h3>Phase 1: Flex the Bichota</h3>
-                        <p>Launch token, build community, initial listings</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"></div>
-                    <div class="roadmap-content">
-                        <h3>Phase 2: Take Over Crypto Twitter</h3>
-                        <p>Viral memes, influencer partnerships, trending hashtags</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"></div>
-                    <div class="roadmap-content">
-                        <h3>Phase 3: Moon with Memes</h3>
-                        <p>Major exchange listings, NFT collection launch</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"></div>
-                    <div class="roadmap-content">
-                        <h3>Phase 4: Bichota Empire Expansion</h3>
-                        <p>Metaverse presence, real-world utility, charity initiatives</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    <!-- Community Section -->
-    <section id="community" style="background: rgba(10, 10, 30, 0.7);">
-        <div class="container">
-            <h2>Community & Utility</h2>
-            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px;">
-                Join our growing community of Bichotas and enjoy exclusive benefits!
-            </p>
-            <div class="community-links">
-                <a href="#" class="social-button">
-                    <i class="fab fa-telegram"></i>
-                    <h3>Telegram</h3>
-                    <p>Join the chat</p>
-                </a>
-                <a href="#" class="social-button">
-                    <i class="fab fa-discord"></i>
-                    <h3>Discord</h3>
-                    <p>Community hub</p>
-                </a>
-                <a href="#" class="social-button">
-                    <i class="fab fa-twitter"></i>
-                    <h3>Twitter</h3>
-                    <p>Follow for memes</p>
-                </a>
-            </div>
-        </div>
-    </section>
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 20, 0.9);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+}
 
-    <!-- Meme Gallery -->
-    <section id="memes">
-        <div class="container">
-            <h2>Meme Gallery / Vibes</h2>
-            <div class="meme-gallery">
-                <div class="meme-item">
-                    <img src="https://i.ibb.co/0X1yY9K/bichota-character.png" alt="Meme 1">
-                </div>
-                <div class="meme-item">
-                    <img src="https://i.ibb.co/0X1yY9K/bichota-character.png" alt="Meme 2">
-                </div>
-                <div class="meme-item">
-                    <img src="https://i.ibb.co/0X1yY9K/bichota-character.png" alt="Meme 3">
-                </div>
-                <div class="meme-item">
-                    <img src="https://i.ibb.co/0X1yY9K/bichota-character.png" alt="Meme 4">
-                </div>
-            </div>
-        </div>
-    </section>
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    <!-- Final CTA -->
-    <section style="text-align: center; padding: 60px 0;">
-        <div class="container">
-            <h2>Join the Bichota Army</h2>
-            <p style="font-size: 1.2rem; margin: 20px 0 30px;">Don't miss out on the next big meme coin revolution!</p>
-            <button class="cta-button">Get Your $BCT Today</button>
-        </div>
-    </section>
+.logo i {
+    color: var(--neon-pink);
+    font-size: 2rem;
+}
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="contract-info">
-                <h3>Contract Address</h3>
-                <div class="contract-address" onclick="copyToClipboard('0x1234567890123456789012345678901234567890')">
-                    0x1234...7890 <i class="fas fa-copy"></i>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-reddit"></i></a>
-            </div>
-            
-            <div class="disclaimer">
-                <p><strong>Disclaimer:</strong> $BCT is a meme coin with no intrinsic value. This is not financial advice. Always do your own research (DYOR) before investing. Cryptocurrency investments are highly volatile and risky. The Bichotas team is not responsible for any financial losses.</p>
-                <p style="margin-top: 20px;">© 2023 Bichotas ($BCT). All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+.logo h1 {
+    font-size: 1.5rem;
+    background: linear-gradient(to right, var(--neon-pink), var(--electric-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
-    <!-- Wallet Connection Modal -->
-    <div class="modal" id="walletModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <h2>Connect Your Wallet</h2>
-            <p>Select your preferred wallet to connect to Bichotas</p>
-            <div class="wallet-options">
-                <div class="wallet-option" data-wallet="metamask">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask">
-                    <span>MetaMask</span>
-                </div>
-                <div class="wallet-option" data-wallet="coinbase">
-                    <img src="https://www.coinbase.com/favicon.ico" alt="Coinbase Wallet">
-                    <span>Coinbase Wallet</span>
-                </div>
-            </div>
-        </div>
-    </div>
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
 
-    <!-- Load ethers.js from CDN -->
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+nav a {
+    color: var(--electric-blue);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(30, 30, 40, 0.8);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid var(--electric-blue);
+}
+
+.wallet-info.connected {
+    border-color: var(--neon-pink);
+}
+
+.wallet-info i {
+    color: var(--gold);
+}
+
+.wallet-address {
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.connect-wallet-btn, .disconnect-wallet-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+}
+
+.disconnect-wallet-btn {
+    background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
+    display: none;
+}
+
+.connect-wallet-btn:hover, .disconnect-wallet-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+.connect-wallet-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--neon-pink) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, var(--electric-blue) 0%, transparent 20%);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+    animation: glow 2s infinite alternate;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    max-width: 800px;
+    color: var(--electric-blue);
+}
+
+.cta-button {
+    background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue));
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    margin: 20px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}
+
+/* Section Styling */
+section {
+    padding: 80px 0;
+    position: relative;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.bichota-image {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.bichota-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    border: 5px solid var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+}
+
+/* Tokenomics */
+.tokenomics-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.token-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    border: 2px solid var(--electric-blue);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.token-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+}
+
+.token-card i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--gold);
+}
+
+.token-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--electric-blue);
+}
+
+/* Roadmap */
+.roadmap-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.roadmap-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--neon-pink), var(--electric-blue));
+}
+
+.roadmap-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.roadmap-item:nth-child(odd) {
+    padding-right: calc(50% + 30px);
+    text-align: right;
+}
+
+.roadmap-item:nth-child(even) {
+    padding-left: calc(50% + 30px);
+}
+
+.roadmap-content {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.roadmap-content h3 {
+    color: var(--neon-pink);
+    margin-bottom: 10px;
+}
+
+.roadmap-point {
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.roadmap-item:nth-child(odd) .roadmap-point {
+    right: calc(50% - 10px);
+}
+
+.roadmap-item:nth-child(even) .roadmap-point {
+    left: calc(50% - 10px);
+}
+
+/* Community */
+.community-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.social-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    width: 200px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    border: 2px solid var(--electric-blue);
+}
+
+.social-button:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+}
+
+.social-button i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--electric-blue);
+}
+
+.social-button:hover i {
+    color: var(--neon-pink);
+}
+
+.social-button h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Meme Gallery */
+.meme-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.meme-item {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    background: var(--card-bg);
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+.meme-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.meme-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 2px solid var(--neon-pink);
+}
+
+.contract-info {
+    margin-bottom: 30px;
+}
+
+.contract-address {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    font-family: monospace;
+    border: 1px solid var(--electric-blue);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contract-address:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    color: var(--electric-blue);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--electric-blue);
+}
+
+.social-links a:hover {
+    background: var(--neon-pink);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: #aaa;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+    }
+    to {
+        text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-pink);
+    }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Wallet Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 2px solid var(--neon-pink);
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: var(--electric-blue);
+}
+
+.wallet-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.wallet-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--electric-blue);
+}
+
+.wallet-option:hover {
+    background: rgba(30, 30, 50, 0.8);
+    border-color: var(--neon-pink);
+}
+
+.wallet-option img {
+    width: 40px;
+    height: 40px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Network Indicator */
+.network-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.network-indicator.connected {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.network-indicator i {
+    color: #00ff00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    section h2 {
+        font-size: 1.8rem;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    .roadmap-container::before {
+        left: 30px;
+    }
+    
+    .roadmap-item:nth-child(odd),
+    .roadmap-item:nth-child(even) {
+        padding: 0;
+        text-align: left;
+        padding-left: 70px;
+    }
+    
+    .roadmap-item:nth-child(odd) .roadmap-point,
+    .roadmap-item:nth-child(even) .roadmap-point {
+        left: 20px;
+    }
+    
+    .wallet-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .wallet-section button {
+        width: 100%;
+        text-align: center;
+    }
+}
