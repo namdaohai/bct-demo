@@ -114,7 +114,7 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
-.connect-wallet-btn {
+.connect-wallet-btn, .disconnect-wallet-btn {
     background: linear-gradient(45deg, var(--neon-pink), var(--electric-blue));
     color: white;
     border: none;
@@ -131,7 +131,12 @@ nav a:hover {
     font-size: 0.7rem;
 }
 
-.connect-wallet-btn:hover {
+.disconnect-wallet-btn {
+    background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
+    display: none;
+}
+
+.connect-wallet-btn:hover, .disconnect-wallet-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
 }
@@ -635,5 +640,10 @@ footer {
     .wallet-section {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    .wallet-section button {
+        width: 100%;
+        text-align: center;
     }
 }
